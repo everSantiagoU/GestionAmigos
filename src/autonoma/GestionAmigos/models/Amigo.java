@@ -1,6 +1,9 @@
 
 package autonoma.GestionAmigos.models;
 
+import autonoma.GestionAmigos.exceptions.CorreoInvalidoException;
+import autonoma.GestionAmigos.exceptions.TelefonoInvalidoException;
+
 /**
  *
  * @author ACER
@@ -14,10 +17,10 @@ public class Amigo {
             throws CorreoInvalidoException, TelefonoInvalidoException {
         
         if (!correoElectronico.contains("@")) {
-            throw new CorreoInvalidoException("El correo electrónico debe contener '@'.");
+            throw new CorreoInvalidoException("El correo electronico debe contener '@'.");
         }
-        if (!telefono.startsWith("606") && !telefono.startsWith("30")) {
-            throw new TelefonoInvalidoException("El número de teléfono debe iniciar con '606' o '30'.");
+        if (!telefono.startsWith("606") || !telefono.startsWith("30")) {
+            throw new TelefonoInvalidoException("El numero de telefono debe iniciar con '606' o '30'.");
         }
         
         this.correoElectronico = correoElectronico;
@@ -42,7 +45,7 @@ public class Amigo {
         return "Amigo{" +
                 "correo='" + correoElectronico + '\'' +
                 ", nombre='" + nombre + '\'' +
-                ", teléfono='" + telefono + '\'' +
+                ", telefono='" + telefono + '\'' +
                 '}';
     }
 }

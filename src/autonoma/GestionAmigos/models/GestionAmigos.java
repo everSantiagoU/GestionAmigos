@@ -5,6 +5,8 @@ package autonoma.GestionAmigos.models;
  *
  * @author ACER
  */
+import autonoma.GestionAmigos.exceptions.AmigoDuplicadoException;
+import autonoma.GestionAmigos.exceptions.AmigoNoEncontradoException;
 import java.util.ArrayList;
 import java.util.List;
 public class GestionAmigos {
