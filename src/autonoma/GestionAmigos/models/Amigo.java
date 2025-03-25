@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package autonoma.GestionAmigos.models;
 
 /**
@@ -9,5 +6,43 @@ package autonoma.GestionAmigos.models;
  * @author ACER
  */
 public class Amigo {
-    
+    private String correoElectronico;
+    private String nombre;
+    private String telefono;
+
+    public Amigo(String correoElectronico, String nombre, String telefono) 
+            throws CorreoInvalidoException, TelefonoInvalidoException {
+        
+        if (!correoElectronico.contains("@")) {
+            throw new CorreoInvalidoException("El correo electrónico debe contener '@'.");
+        }
+        if (!telefono.startsWith("606") && !telefono.startsWith("30")) {
+            throw new TelefonoInvalidoException("El número de teléfono debe iniciar con '606' o '30'.");
+        }
+        
+        this.correoElectronico = correoElectronico;
+        this.nombre = nombre;
+        this.telefono = telefono;
+    }
+
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    @Override
+    public String toString() {
+        return "Amigo{" +
+                "correo='" + correoElectronico + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", teléfono='" + telefono + '\'' +
+                '}';
+    }
 }
