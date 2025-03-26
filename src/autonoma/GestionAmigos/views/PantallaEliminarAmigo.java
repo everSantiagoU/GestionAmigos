@@ -22,12 +22,10 @@ public class PantallaEliminarAmigo extends javax.swing.JFrame {
     /**
      * Creates new form PantallaEliminarAmigo
      */
-    public PantallaEliminarAmigo() {
-        this.gestionAmigos = gestionAmigos;
+    public PantallaEliminarAmigo(GestionAmigos gestionAmigos) {
+        this.gestionAmigos = gestionAmigos; // Recibe la instancia de GestionAmigos
         initComponents();
-        
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +44,7 @@ public class PantallaEliminarAmigo extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -87,6 +85,11 @@ public class PantallaEliminarAmigo extends javax.swing.JFrame {
         jLabel3.setText("Ingrese el correo del amigo a eliminar:");
 
         jButton1.setText("Eliminar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarAmigo(evt); // Llama al método para eliminar amigo
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -131,7 +134,17 @@ public class PantallaEliminarAmigo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void eliminarAmigo(java.awt.event.ActionEvent evt) {
+        String correo = jTextField1.getText(); // Obtener el correo ingresado
+        try {
+            boolean eliminado = gestionAmigos.eliminarAmigo(correo); // Llamar al método eliminarAmigo
+            if (eliminado) {
+                JOptionPane.showMessageDialog(this, "Amigo eliminado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (AmigoNoEncontradoException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

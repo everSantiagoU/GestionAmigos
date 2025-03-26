@@ -4,16 +4,19 @@
  */
 package autonoma.GestionAmigos.views;
 
+import autonoma.GestionAmigos.models.GestionAmigos;
+
 /**
  *
  * @author juand
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
     
-    PantallaAgregarAmigo agregar = new PantallaAgregarAmigo();
-    BuscarAmigo buscar = new BuscarAmigo();
-    PantallaEliminarAmigo eliminar = new PantallaEliminarAmigo();
-    PantallaInfoApp info = new PantallaInfoApp();
+    private GestionAmigos gestionAmigos = new GestionAmigos(); 
+    private PantallaAgregarAmigo agregar = new PantallaAgregarAmigo(gestionAmigos);
+    private BuscarAmigo buscar = new BuscarAmigo(gestionAmigos);
+    private PantallaEliminarAmigo eliminar = new PantallaEliminarAmigo(gestionAmigos);
+    private PantallaInfoApp info = new PantallaInfoApp();
 
     public PantallaPrincipal() {
         initComponents();

@@ -19,8 +19,8 @@ public class PantallaAgregarAmigo extends javax.swing.JFrame {
     /**
      * Creates new form PantallaAgregarAmigo
      */
-    public PantallaAgregarAmigo() {
-        gestionAmigos = new GestionAmigos();
+    public PantallaAgregarAmigo(GestionAmigos gestionAmigos) {
+        this.gestionAmigos = gestionAmigos;
         initComponents();
     }
 

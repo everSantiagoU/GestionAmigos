@@ -20,8 +20,8 @@ public class BuscarAmigo extends javax.swing.JFrame {
     /**
      * Creates new form BuscarAmigo
      */
-    public BuscarAmigo() {
-        gestionAmigos = new GestionAmigos();
+    public BuscarAmigo(GestionAmigos gestionAmigos) {
+        this.gestionAmigos = gestionAmigos;
         initComponents();
         
         jButton1.addActionListener(new ActionListener() {
@@ -35,7 +35,6 @@ public class BuscarAmigo extends javax.swing.JFrame {
     private void buscarAmigoActionPerformed(ActionEvent evt) {
         // Obtener el correo electrónico del campo de texto
         String correo = jTextField1.getText().trim();
-        BuscarAmigo buscarAmigo = new BuscarAmigo();
 
         // Validar que el campo no esté vacío
         if (correo.isEmpty()) {
