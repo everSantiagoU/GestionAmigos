@@ -4,9 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/juand/Desktop/GestionDeAmigosGit/GestionAmigos/src/autonoma/GestionAmigos/views/PantallaAgregarAmigo.java</file>
+            <file>file:/C:/Users/juand/Desktop/GestionDeAmigosGit/GestionAmigos/src/autonoma/GestionAmigos/models/GestionAmigos.java</file>
             <file>file:/C:/Users/juand/Desktop/GestionDeAmigosGit/GestionAmigos/src/autonoma/GestionAmigos/exceptions/AmigoDuplicadoException.java</file>
+            <file>file:/C:/Users/juand/Desktop/GestionDeAmigosGit/GestionAmigos/src/autonoma/GestionAmigos/exceptions/TelefonoInvalidoException.java</file>
+            <file>file:/C:/Users/juand/Desktop/GestionDeAmigosGit/GestionAmigos/src/autonoma/GestionAmigos/exceptions/CorreoInvalidoException.java</file>
             <file>file:/C:/Users/juand/Desktop/GestionDeAmigosGit/GestionAmigos/src/autonoma/GestionAmigos/exceptions/AmigoNoEncontradoException.java</file>
             <file>file:/C:/Users/juand/Desktop/GestionDeAmigosGit/GestionAmigos/src/autonoma/GestionAmigos/views/PantallaPrincipal.java</file>
+            <file>file:/C:/Users/juand/Desktop/GestionDeAmigosGit/GestionAmigos/src/autonoma/GestionAmigos/views/PantallaEliminarAmigo.java</file>
+            <file>file:/C:/Users/juand/Desktop/GestionDeAmigosGit/GestionAmigos/src/autonoma/GestionAmigos/views/PantallaInfoApp.java</file>
+            <file>file:/C:/Users/juand/Desktop/GestionDeAmigosGit/GestionAmigos/src/autonoma/GestionAmigos/Main/Main.java</file>
+            <file>file:/C:/Users/juand/Desktop/GestionDeAmigosGit/GestionAmigos/src/autonoma/GestionAmigos/views/BuscarAmigo.java</file>
         </group>
     </open-files>
 </project-private>

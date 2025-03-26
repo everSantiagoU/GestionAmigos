@@ -9,12 +9,30 @@ package autonoma.GestionAmigos.views;
  * @author juand
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
+    
+    PantallaAgregarAmigo agregar = new PantallaAgregarAmigo();
+    BuscarAmigo buscar = new BuscarAmigo();
+    PantallaEliminarAmigo eliminar = new PantallaEliminarAmigo();
+    PantallaInfoApp info = new PantallaInfoApp();
 
-    /**
-     * Creates new form NewJFrame
-     */
     public PantallaPrincipal() {
         initComponents();
+
+        // Configurar las ventanas emergentes
+        configurarVentanaEmergente(agregar);
+        configurarVentanaEmergente(buscar);
+        configurarVentanaEmergente(eliminar);
+        configurarVentanaEmergente(info);
+    }
+
+    private void configurarVentanaEmergente(javax.swing.JFrame ventana) {
+        ventana.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE); // Cerrar solo la ventana emergente
+        ventana.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent e) {
+                setVisible(true); // Mostrar la ventana principal al cerrar la ventana emergente
+            }
+        });
     }
 
     /**
@@ -44,7 +62,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -82,9 +100,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
 
-        añadirAmigoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/GestionAmigos/images/añadir.png"))); // NOI18N
+        añadirAmigoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/GestionAmigos/images/añadir2.png"))); // NOI18N
         añadirAmigoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 añadirAmigoBtnMouseClicked(evt);
@@ -94,7 +112,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Añadir Amigo");
 
-        buscarAmigoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/GestionAmigos/images/buscarAmigos.png"))); // NOI18N
+        buscarAmigoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/GestionAmigos/images/buscarAmigos2.png"))); // NOI18N
         buscarAmigoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buscarAmigoBtnMouseClicked(evt);
@@ -139,15 +157,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(añadirAmigoBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addGap(101, 101, 101)))
+                        .addGap(11, 11, 11)
+                        .addComponent(añadirAmigoBtn)))
+                .addGap(101, 101, 101)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -182,20 +198,21 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(añadirAmigoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(añadirAmigoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buscarAmigoBtn)
                             .addComponent(eliminarAmigoBtn))
-                        .addGap(18, 18, 18)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGap(11, 11, 11)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel5))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel5)))
                 .addGap(45, 45, 45)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(informacionAppBtn)
@@ -228,22 +245,32 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void añadirAmigoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadirAmigoBtnMouseClicked
         // TODO add your handling code here:
+        agregar.setVisible(true);
+        setVisible(false);
+        
     }//GEN-LAST:event_añadirAmigoBtnMouseClicked
 
     private void buscarAmigoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarAmigoBtnMouseClicked
         // TODO add your handling code here:
+        buscar.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_buscarAmigoBtnMouseClicked
 
     private void eliminarAmigoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarAmigoBtnMouseClicked
         // TODO add your handling code here:
+        eliminar.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_eliminarAmigoBtnMouseClicked
 
     private void informacionAppBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacionAppBtnMouseClicked
         // TODO add your handling code here:
+        info.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_informacionAppBtnMouseClicked
 
     private void salirBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirBtnMouseClicked
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_salirBtnMouseClicked
 
     
