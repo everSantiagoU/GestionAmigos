@@ -6,7 +6,8 @@ package autonoma.GestionAmigos.exceptions;
 
 /**
  *
- * @author ACER
+ * @author Santiago
+ * 
  */
 public class AmigoNoEncontradoException extends Exception{
     public AmigoNoEncontradoException(String mensaje){
