@@ -3,19 +3,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package autonoma.GestionAmigos.views;
-
+import autonoma.GestionAmigos.models.Amigo;
+import autonoma.GestionAmigos.models.GestionAmigos;
+import autonoma.GestionAmigos.exceptions.AmigoDuplicadoException;
+import autonoma.GestionAmigos.exceptions.CorreoInvalidoException;
+import autonoma.GestionAmigos.exceptions.TelefonoInvalidoException;
+import autonoma.GestionAmigos.exceptions.AmigoNoEncontradoException;
+import javax.swing.JOptionPane;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
 /**
  *
  * @author juand
  */
 public class PantallaEliminarAmigo extends javax.swing.JFrame {
+    private GestionAmigos gestionAmigos;
 
     /**
      * Creates new form PantallaEliminarAmigo
      */
     public PantallaEliminarAmigo() {
+        this.gestionAmigos = gestionAmigos;
         initComponents();
+        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

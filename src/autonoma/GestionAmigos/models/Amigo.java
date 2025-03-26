@@ -19,7 +19,7 @@ public class Amigo {
         if (!correoElectronico.contains("@")) {
             throw new CorreoInvalidoException("El correo electronico debe contener '@'.");
         }
-        if (!telefono.startsWith("606") || !telefono.startsWith("30")) {
+        if (!(telefono.startsWith("606") || telefono.startsWith("30"))) {
             throw new TelefonoInvalidoException("El numero de telefono debe iniciar con '606' o '30'.");
         }
         

@@ -3,17 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package autonoma.GestionAmigos.views;
-
+import autonoma.GestionAmigos.models.Amigo;
+import autonoma.GestionAmigos.models.GestionAmigos;
+import autonoma.GestionAmigos.exceptions.AmigoDuplicadoException;
+import autonoma.GestionAmigos.exceptions.CorreoInvalidoException;
+import autonoma.GestionAmigos.exceptions.TelefonoInvalidoException;
+import javax.swing.JOptionPane;
 /**
  *
  * @author juand
  */
 public class PantallaAgregarAmigo extends javax.swing.JFrame {
+    private GestionAmigos gestionAmigos;
 
     /**
      * Creates new form PantallaAgregarAmigo
      */
     public PantallaAgregarAmigo() {
+        gestionAmigos = new GestionAmigos();
         initComponents();
     }
 
@@ -170,6 +177,50 @@ public class PantallaAgregarAmigo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String nombre = jTextField1.getText().trim();
+        String telefono = jTextField2.getText().trim();
+        String correo = jTextField3.getText().trim();
+        
+        if (nombre.isEmpty() || telefono.isEmpty() || correo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, 
+                "Todos los campos son obligatorios", 
+                "Error de Validación", 
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+                try {
+            // Crear un nuevo amigo con validaciones de correo y teléfono
+            Amigo nuevoAmigo = new Amigo(correo, nombre, telefono);
+            
+            // Intentar agregar el amigo
+            if (gestionAmigos.agregarAmigo(nuevoAmigo)) {
+                JOptionPane.showMessageDialog(this, 
+                    "Amigo agregado exitosamente", 
+                    "Operación Exitosa", 
+                    JOptionPane.INFORMATION_MESSAGE);
+                
+                // Limpiar campos después de agregar
+                jTextField1.setText("");
+                jTextField2.setText("");
+                jTextField3.setText("");
+            }
+        } catch (CorreoInvalidoException e) {
+            JOptionPane.showMessageDialog(this, 
+                "Error en el correo electrónico: " + e.getMessage(), 
+                "Error de Validación", 
+                JOptionPane.ERROR_MESSAGE);
+        } catch (TelefonoInvalidoException e) {
+            JOptionPane.showMessageDialog(this, 
+                "Error en el teléfono: " + e.getMessage(), 
+                "Error de Validación", 
+                JOptionPane.ERROR_MESSAGE);
+        } catch (AmigoDuplicadoException e) {
+            JOptionPane.showMessageDialog(this, 
+                "Error al agregar amigo: " + e.getMessage(), 
+                "Amigo Duplicado", 
+                JOptionPane.WARNING_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
    

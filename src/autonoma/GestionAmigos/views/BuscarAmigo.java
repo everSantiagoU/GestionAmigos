@@ -3,18 +3,66 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package autonoma.GestionAmigos.views;
-
+import autonoma.GestionAmigos.models.Amigo;
+import autonoma.GestionAmigos.models.GestionAmigos;
+import autonoma.GestionAmigos.exceptions.AmigoNoEncontradoException;
+import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /**
  *
  * @author juand
  */
 public class BuscarAmigo extends javax.swing.JFrame {
+    private GestionAmigos gestionAmigos;
+
 
     /**
      * Creates new form BuscarAmigo
      */
     public BuscarAmigo() {
+        gestionAmigos = new GestionAmigos();
         initComponents();
+        
+        jButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                buscarAmigoActionPerformed(evt);
+            }
+        });
+    }
+
+    private void buscarAmigoActionPerformed(ActionEvent evt) {
+        // Obtener el correo electrónico del campo de texto
+        String correo = jTextField1.getText().trim();
+        BuscarAmigo buscarAmigo = new BuscarAmigo();
+
+        // Validar que el campo no esté vacío
+        if (correo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, 
+                "Por favor, ingrese un correo electrónico", 
+                "Error de Validación", 
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            // Buscar el amigo usando el método de GestionAmigos
+            Amigo amigoBuscado = gestionAmigos.buscarAmigo(correo);
+            
+            // Mostrar la información del amigo en el área de texto
+            jTextArea1.setText("Amigo encontrado:\n" +
+                "Nombre: " + amigoBuscado.getNombre() + "\n" +
+                "Correo: " + amigoBuscado.getCorreoElectronico() + "\n" +
+                "Teléfono: " + amigoBuscado.getTelefono());
+        } catch (AmigoNoEncontradoException e) {
+            // Manejar el caso cuando no se encuentra el amigo
+            jTextArea1.setText("");
+            JOptionPane.showMessageDialog(this, 
+                e.getMessage(), 
+                "Amigo No Encontrado", 
+                JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     /**
